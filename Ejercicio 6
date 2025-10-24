@@ -1,0 +1,23 @@
+//Acceso a Camelot
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string usuario, contraseña;
+    const string USUARIO = "Gwenevere";
+    const string CONTRASEÑA = "excalibur";
+    
+    cout << "Ingresa nombre de usuario: ";
+    cin >> usuario;
+    cout << "Ingresa contraseña: ";
+    cin >> contraseña;
+    
+    if (usuario == USUARIO && contraseña == CONTRASEÑA) {
+        cout << "Usuario y contraseña correctos. Puede ingresar a Camelot" << endl;
+    } else {
+        cout << "Acceso denegado" << endl;
+    }
+    return 0;
+}
