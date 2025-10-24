@@ -1,0 +1,22 @@
+//Valor Absoluto de un Número 
+
+#include <iostream>
+#include <cmath>
+using namespace std; 
+
+int main() {
+    int numero;
+    cout << "Ingresa un número entero: ";
+    cin >> numero;
+    
+    int valor_absoluto;
+    
+    if (numero < 0) {
+        valor_absoluto = numero * -1;
+    } else {
+        valor_absoluto = numero;
+    }
+    
+    cout << "El valor absoluto de " << numero << " es " << valor_absoluto << endl;
+    return 0;
+}
