@@ -1,0 +1,14 @@
+//Saludo Personalizado en la Matrix
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string nombre;
+    cout << "Ingresa tu nombre: ";
+    cin >> nombre;
+    
+    cout << "Ahora estás en la matrix, " << nombre << endl;
+    return 0;
+}
