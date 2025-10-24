@@ -1,0 +1,24 @@
+//Verificador de Año Bisiesto 
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int año;
+    cout << "Ingresa un año: ";
+    cin >> año;
+    
+    bool es_bisiesto = false;
+    
+    // Un año es bisiesto si es divisible por 4 Y (no divisible por 100 O divisible por 400)
+    if ((año % 4 == 0 && año % 100 != 0) || (año % 400 == 0)) {
+        es_bisiesto = true;
+    }
+    
+    if (es_bisiesto) {
+        cout << año << " es un año bisiesto." << endl;
+    } else {
+        cout << año << " no es un año bisiesto." << endl;
+    }
+    return 0;
+}
