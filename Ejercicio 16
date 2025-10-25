@@ -1,0 +1,46 @@
+//Descuento en Compras
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    double monto = -1.0;
+    double total_compras = 0.0;
+    const double UMBRAL_DESCUENTO = 1000.0;
+    const double PORCENTAJE_DESCUENTO = 0.10;
+    
+    cout << "Ingreso de Compras" << endl;
+    cout << "Ingresa los montos de las compras (0 para finalizar):" << endl;
+    
+    while (monto != 0) {
+        cout << "Monto: ";
+        if (!(cin >> monto)) {
+            cout << "Error: Ingreso no válido. Finalizando." << endl;
+            break;
+        }
+        
+        if (monto < 0) {
+            cout << "Monto negativo no procesado. Ingresa un nuevo monto." << endl;
+            continue;
+        }
+        
+        if (monto > 0) {
+            total_compras += monto;
+        }
+    }
+    
+    double total_a_pagar = total_compras;
+    
+    if (total_compras > UMBRAL_DESCUENTO) {
+        double descuento = total_compras * PORCENTAJE_DESCUENTO;
+        total_a_pagar = total_compras - descuento;
+        cout << "\n¡Ventas superiores a " << UMBRAL_DESCUENTO << "! Se aplica un 10% de descuento." << endl;
+        cout << "Descuento aplicado: " << fixed << setprecision(2) << descuento << endl;
+    }
+    
+    cout << "Total de compras: " << fixed << setprecision(2) << total_compras << endl;
+    cout << "Total a pagar: " << total_a_pagar << endl;
+    return 0;
+}
