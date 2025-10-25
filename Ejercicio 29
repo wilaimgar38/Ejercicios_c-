@@ -1,0 +1,55 @@
+//Escribir un programa que permita al usuario ingresar números enteros hasta que ingrese uno cuyo dígito inicial sea el 9 (el cual no se procesará). 
+//Una vez terminada la repetición, mostrar cuántos de los números que el usuario ingresó tienen sólo dos divisores 
+//(para esto es posible reutilizar parte de la estrategia elaborada en el ejercicio 25).
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int contarDivisores(int n) {
+    if (n <= 1) { 
+        return 0;
+    }
+    int contador = 0;
+    for (int i = 1; i <= n; ++i) {
+        if (n % i == 0) {
+            contador++;
+        }
+    }
+    return contador;
+}
+
+int main() {
+    int numero;
+    int primos_ingresados = 0;
+    
+    cout << "--- Conteo de Números Primos ---" << endl;
+    cout << "Ingresa números (termina al ingresar uno que comience con 9):" << endl;
+    
+    while (true) {
+        cout << "Número: ";
+        if (!(cin >> numero)) {
+            cout << "Error: Ingreso no válido. Finalizando." << endl;
+            break;
+        }
+        
+        // Verificar si el número comienza con '9'
+        string s_numero = to_string(numero);
+        if (s_numero.length() > 0 && s_numero[0] == '9') {
+            cout << "\n¡Corte! Se ingresó un número que comienza con 9." << endl;
+            break;
+        }
+        
+        // Verificar si tiene solo dos divisores (es primo)
+        if (contarDivisores(numero) == 2) {
+            primos_ingresados++;
+        }
+    }
+    
+    cout << "\n--- Resultados ---" << endl;
+    cout << "Cantidad de números ingresados con solo dos divisores (primos): " << primos_ingresados << endl;
+    
+    return 0;
+}
