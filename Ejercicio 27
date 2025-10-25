@@ -1,0 +1,64 @@
+//Escribir un programa que permita al usuario ingresar números enteros. La repetición terminará cuando el usuario ingrese un número para 
+//el cual la suma de sus dígitos sea mayor que 1000 ó múltiplo de 5. Finalmente, mostrar cuántos números impares ingresó el usuario antes de cortar la repetición. 
+//Reutilizar las funciones esPar y sumatoriaDigitos implementadas en los ejercicios anteriores.
+
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// Funciones reutilizadas
+bool esPar(int numero) {
+    return (numero % 2 == 0);
+}
+
+int sumatoriaDigitos(int n) {
+    if (n < 0) {
+        n = abs(n);
+    }
+    if (n == 0) {
+        return 0;
+    }
+    int suma = 0;
+    while (n > 0) {
+        suma += n % 10;
+        n /= 10;
+    }
+    return suma;
+}
+// Fin de funciones reutilizadas
+
+int main() {
+    int numero;
+    int impares_ingresados = 0;
+    
+    cout << "--- Ingreso de Números con Corte ---" << endl;
+    cout << "La repetición termina si la suma de dígitos es > 1000 o múltiplo de 5." << endl;
+    
+    while (true) {
+        cout << "Ingresa un número entero: ";
+        if (!(cin >> numero)) {
+            cout << "Error: Ingreso no válido. Finalizando." << endl;
+            break;
+        }
+        
+        int suma_dig = sumatoriaDigitos(numero);
+        
+        // Contar números impares ANTES de la verificación de corte
+        if (!esPar(numero)) {
+            impares_ingresados++;
+        }
+
+        // Criterio de corte
+        if (suma_dig > 1000 || suma_dig % 5 == 0) {
+            cout << "\n¡Corte! Suma de dígitos (" << suma_dig << ") cumple la condición." << endl;
+            break;
+        }
+    }
+    
+    cout << "\n--- Resultados ---" << endl;
+    cout << "Cantidad de números impares ingresados antes de cortar: " << impares_ingresados << endl;
+    
+    return 0;
+}
