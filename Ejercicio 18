@@ -1,0 +1,62 @@
+//Análisis de Calificaciones de Alumnos
+
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    char respuesta;
+    int total_calificaciones = 0;
+    int aprobados = 0;
+    int suma_aprobados = 0;
+    
+    cout << "¿Desea analizar calificaciones de alumnos? (S/N): ";
+    cin >> respuesta;
+    respuesta = toupper(respuesta);
+    
+    while (respuesta == 'S') {
+        int calificacion;
+        cout << "Ingresa la calificación del alumno: ";
+        if (!(cin >> calificacion)) {
+            cout << "Error: Calificación no válida. Finalizando." << endl;
+            break;
+        }
+        
+        total_calificaciones++;
+        
+        if (calificacion > 4) {
+            aprobados++;
+            suma_aprobados += calificacion;
+            cout << "Alumno aprobado." << endl;
+        } else {
+            cout << "Alumno desaprobado." << endl;
+        }
+        
+        cout << "\n¿Desea analizar más calificaciones? (S/N): ";
+        cin >> respuesta;
+        respuesta = toupper(respuesta);
+    }
+    
+    cout << "\n--- Resultados del Análisis ---" << endl;
+    
+    if (total_calificaciones > 0) {
+        double porcentaje_aprobados = (static_cast<double>(aprobados) / total_calificaciones) * 100.0;
+        double promedio_aprobados = 0.0;
+        if (aprobados > 0) {
+            promedio_aprobados = static_cast<double>(suma_aprobados) / aprobados;
+        }
+        
+        cout << fixed << setprecision(2);
+        cout << "Total de calificaciones procesadas: " << total_calificaciones << endl;
+        cout << "Porcentaje de alumnos aprobados: " << porcentaje_aprobados << " %" << endl;
+        cout << "Promedio de los aprobados: " << promedio_aprobados << endl;
+        
+    } else {
+        cout << "No se procesaron calificaciones." << endl;
+    }
+    
+    return 0;
+}
