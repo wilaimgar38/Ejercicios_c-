@@ -1,0 +1,27 @@
+//Divisores Positivos de un Número
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int numero;
+    cout << "Ingresa un número entero positivo: ";
+    cin >> numero;
+    
+    int n_abs = abs(numero); 
+    
+    if (n_abs == 0) {
+        cout << "El cero tiene infinitos divisores." << endl;
+    } else {
+        cout << "Divisores positivos de " << numero << ":" << endl;
+        
+        for (int i = 1; i <= n_abs; ++i) {
+            if (n_abs % i == 0) {
+                cout << i << " ";
+            }
+        }
+        cout << endl;
+    }
+    return 0;
+}
