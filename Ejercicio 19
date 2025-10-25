@@ -1,0 +1,48 @@
+//Escribir un programa que solicite al usuario el ingreso de strings de longitud 1 (un solo carácter), 
+//uno por vez. La repetición finalizará cuando se ingrese un string que no tenga longitud 1, 
+//o cuando el string ingresado corresponda al dígito numérico 0.
+//Al finalizar, mostrar el string completo que se formó con todos los caracteres ingresados y qué porcentaje de caracteres del total fueron la letra “a”.
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    string cadena_completa = "";
+    string entrada;
+    int contador_a = 0;
+    int total_caracteres = 0;
+    
+    cout << "--- Formador de Cadena ---" << endl;
+    cout << "Ingresa caracteres uno por vez (0 o cadena != 1 para finalizar):" << endl;
+    
+    while (true) {
+        cout << "Carácter: ";
+        cin >> entrada;
+        
+        if (entrada.length() != 1 || entrada == "0") {
+            break;
+        }
+        
+        cadena_completa += entrada;
+        total_caracteres++;
+        
+        if (entrada[0] == 'a' || entrada[0] == 'A') {
+            contador_a++;
+        }
+    }
+    
+    double porcentaje_a = 0.0;
+    if (total_caracteres > 0) {
+        porcentaje_a = (static_cast<double>(contador_a) / total_caracteres) * 100.0;
+    }
+    
+    cout << "\n--- Resultados ---" << endl;
+    cout << "String completo formado: " << cadena_completa << endl;
+    cout << fixed << setprecision(2);
+    cout << "Porcentaje de caracteres 'a's (A/a): " << porcentaje_a << " %" << endl;
+    
+    return 0;
+}
