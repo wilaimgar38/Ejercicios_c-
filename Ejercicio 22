@@ -1,0 +1,39 @@
+//Análisis de Cadena (Letras, Símbolos, Dígitos) 🔠
+
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int main() {
+    string cadena;
+    int letras = 0;
+    int digitos = 0;
+    int simbolos = 0; 
+    int digitos_mult_4 = 0;
+    
+    cout << "Ingresa una cadena de caracteres: ";
+    getline(cin, cadena);
+    
+    for (char c : cadena) {
+        if (isalpha(c)) {
+            letras++;
+        } else if (isdigit(c)) {
+            digitos++;
+            int valor_digito = c - '0';
+            if (valor_digito != 0 && valor_digito % 4 == 0) { 
+                digitos_mult_4++;
+            }
+        } else {
+            simbolos++;
+        }
+    }
+    
+    cout << "\n--- Análisis de Cadena ---" << endl;
+    cout << "Cantidad de letras (A-Z, a-z): " << letras << endl;
+    cout << "Cantidad de dígitos numéricos (0-9): " << digitos << endl;
+    cout << "Cantidad de símbolos (otros): " << simbolos << endl;
+    cout << "Cantidad de dígitos múltiplos de 4 (excluyendo el 0): " << digitos_mult_4 << endl;
+    
+    return 0;
+}
