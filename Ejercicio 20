@@ -1,0 +1,36 @@
+//Suma de Dígitos de un Número
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int sumar_digitos(int n) {
+    if (n < 0) {
+        n = abs(n); 
+    }
+    if (n == 0) {
+        return 0;
+    }
+    
+    int suma = 0;
+    while (n > 0) {
+        suma += n % 10;
+        n /= 10;
+    }
+    return suma;
+}
+
+int main() {
+    int numero;
+    cout << "Ingresa un número entero: ";
+    if (!(cin >> numero)) {
+        cout << "Error: Ingreso no válido." << endl;
+        return 1;
+    }
+    
+    int suma = sumar_digitos(numero);
+    
+    cout << "La suma de los dígitos de " << numero << " es: " << suma << endl;
+    
+    return 0;
+}
