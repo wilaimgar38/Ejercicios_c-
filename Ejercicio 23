@@ -1,0 +1,47 @@
+//Concatenación de Strings con Criterios Múltiples
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string s1_mult_3 = "";
+    string s2_contiene_0 = "";
+    string entrada;
+    
+    cout << "--- Concatenación de Números (como string) ---" << endl;
+    cout << "Ingresa números (termina con múltiplo de 10 o < 0):" << endl;
+    
+    while (true) {
+        cout << "Número (string): ";
+        cin >> entrada;
+        
+        // Intentar la conversión a entero para verificar la condición de terminación
+        try {
+            int valor = stoi(entrada);
+            if (valor % 10 == 0 || valor < 0) {
+                cout << "Condición de finalización alcanzada. Deteniendo el ingreso." << endl;
+                break;
+            }
+        } catch (const exception& e) {
+            // Si no se pudo convertir, seguimos procesando como string si no es el caracter de corte
+        }
+
+        // Criterio 1: Cantidad de dígitos múltiplo de 3
+        if (entrada.length() % 3 == 0) {
+            s1_mult_3 += entrada + "-";
+        }
+        
+        // Criterio 2: Contiene el dígito '0'
+        if (entrada.find('0') != string::npos) {
+            s2_contiene_0 += entrada + "-";
+        }
+    }
+    
+    cout << "\n--- Resultados ---" << endl;
+    cout << "String Múltiplo de 3 (S1): " << s1_mult_3 << endl;
+    cout << "String Contiene '0' (S2): " << s2_contiene_0 << endl;
+    
+    return 0;
+}
