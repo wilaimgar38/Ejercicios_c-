@@ -1,0 +1,28 @@
+//Reemplazar Carácter por Asterisco
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    string frase;
+    string caracter_str;
+    
+    cout << "Ingresa una frase: ";
+    getline(cin, frase);
+    
+    do {
+        cout << "Ingresa el carácter a reemplazar (longitud 1): ";
+        getline(cin, caracter_str);
+    } while (caracter_str.length() != 1);
+    
+    char caracter_a_reemplazar = caracter_str[0];
+    const char REEMPLAZO = '*';
+    
+    replace(frase.begin(), frase.end(), caracter_a_reemplazar, REEMPLAZO);
+    
+    cout << "\nFrase modificada: " << frase << endl;
+    return 0;
+}
