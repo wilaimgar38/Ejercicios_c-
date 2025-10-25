@@ -1,0 +1,68 @@
+//Dígitos Pares/Impares y Múltiplos de 3 📊
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+void analizar_digitos(int n, int& pares, int& impares) {
+    pares = 0;
+    impares = 0;
+    
+    if (n < 0) {
+        n = abs(n);
+    }
+    if (n == 0) {
+        pares = 1;
+        return;
+    }
+    
+    while (n > 0) {
+        int digito = n % 10;
+        if (digito % 2 == 0) {
+            pares++;
+        } else {
+            impares++;
+        }
+        n /= 10;
+    }
+}
+
+int main() {
+    int numero = 0;
+    int multiplos_de_3 = 0;
+    
+    cout << "--- Análisis de Números Enteros ---" << endl;
+    cout << "Ingresa números enteros positivos (-1 para finalizar):" << endl;
+    
+    while (true) {
+        cout << "Número: ";
+        if (!(cin >> numero)) {
+            cout << "Error: Ingreso no válido. Finalizando." << endl;
+            break;
+        }
+        
+        if (numero == -1) {
+            break;
+        }
+        
+        if (numero < -1) {
+            cout << "El número debe ser positivo o -1 para finalizar. Intenta de nuevo." << endl;
+            continue;
+        }
+        
+        if (numero % 3 == 0) {
+            multiplos_de_3++;
+        }
+        
+        int pares, impares;
+        analizar_digitos(numero, pares, impares);
+        
+        cout << "  -> Dígitos pares: " << pares << ", Dígitos impares: " << impares << endl;
+    }
+    
+    cout << "\n--- Resultados Finales ---" << endl;
+    cout << "Cantidad de números múltiplos de 3 ingresados: " << multiplos_de_3 << endl;
+    
+    return 0;
+}
