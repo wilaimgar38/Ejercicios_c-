@@ -1,0 +1,43 @@
+//Hallar el Mayor de Números Positivos
+
+#include <iostream>
+#include <limits>
+
+using namespace std;
+
+int main() {
+    int numero = -1;
+    int mayor = numeric_limits<int>::min(); 
+    bool primer_numero_ingresado = false;
+    
+    cout << "Ingreso de Números Positivos" << endl;
+    cout << "Ingresa números positivos (0 para finalizar):" << endl;
+    
+    while (true) {
+        cout << "Número: ";
+        if (!(cin >> numero)) {
+            cout << "Error: Ingreso no válido. Finalizando." << endl;
+            break;
+        }
+        
+        if (numero == 0) {
+            break; 
+        }
+        
+        if (numero > 0) {
+            if (!primer_numero_ingresado || numero > mayor) {
+                mayor = numero;
+                primer_numero_ingresado = true;
+            }
+        }
+    }
+    
+    cout << "\n--- Resultado ---" << endl;
+    if (primer_numero_ingresado) {
+        cout << "El mayor de los números positivos ingresados fue: " << mayor << endl;
+    } else {
+        cout << "No se ingresaron números positivos." << endl;
+    }
+    
+    return 0;
+}
