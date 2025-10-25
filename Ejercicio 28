@@ -1,0 +1,44 @@
+//Escribí una función que reciba un string y retorne True si es un palíndromo (esto es, si se lee igual de izquierda a derecha o de derecha a izquierda), 
+//False en caso contrario. Utilizar esta función en un programa que permita al usuario ingresar palabras hasta que ingrese la palabra “fin” 
+//(suponer que todas las palabras son en minúsculas o todas en mayúsculas, de forma consistente). Al finalizar, mostrar la cantidad de palíndromos ingresados.
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+bool esPalindromo(const string& s) {
+    string invertida = s;
+    reverse(invertida.begin(), invertida.end());
+    return s == invertida;
+}
+
+int main() {
+    string palabra;
+    int palindromos_contados = 0;
+    
+    cout << "--- Verificador de Palíndromos ---" << endl;
+    cout << "Ingresa palabras ('fin' para finalizar):" << endl;
+    
+    while (true) {
+        cout << "Palabra: ";
+        cin >> palabra;
+        
+        if (palabra == "fin" || palabra == "FIN") {
+            break;
+        }
+        
+        if (esPalindromo(palabra)) {
+            palindromos_contados++;
+            cout << "  -> ¡Es un palíndromo!" << endl;
+        } else {
+            cout << "  -> No es un palíndromo." << endl;
+        }
+    }
+    
+    cout << "\n--- Resultados ---" << endl;
+    cout << "Cantidad total de palíndromos ingresados: " << palindromos_contados << endl;
+    
+    return 0;
+}
