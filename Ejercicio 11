@@ -1,0 +1,27 @@
+//Sucesión de Fibonacci (Primeros 10) 🧬
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 0;
+    int b = 1;
+    int siguiente;
+    
+    cout << "Los primeros 10 números de Fibonacci son:" << endl;
+    
+    // Imprimimos el primer número (0)
+    cout << a << " "; 
+    
+    for (int i = 1; i < 10; ++i) {
+        cout << b << " ";
+        
+        siguiente = a + b;
+        
+        a = b;
+        b = siguiente;
+    }
+    
+    cout << endl;
+    return 0;
+}
